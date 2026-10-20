@@ -1,0 +1,4 @@
+__pycache__/
+negocio_data.db
+.venv/
+venv/
