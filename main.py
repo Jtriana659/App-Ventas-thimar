@@ -16,7 +16,7 @@ class AppNegocio(ctk.CTk):
         self.grid_columnconfigure(1, weight=1)
 
         # --- PANEL LATERAL (MENU) ---
-        self.sidebar_frame = ctk.CTkFrame(self, width=220, corner_radius=0)
+        self.sidebar_frame = ctk.CTkScrollableFrame(self, width=220, corner_radius=0)
         self.sidebar_frame.grid(row=0, column=0, sticky="nsew")
         
         self.logo_label = ctk.CTkLabel(self.sidebar_frame, text="THIMAR", font=ctk.CTkFont(size=24, weight="bold"))
@@ -27,7 +27,7 @@ class AppNegocio(ctk.CTk):
 
         # --- ESTRUCTURA DE GRUPOS ---
         menu_grupos = {
-            "📊 PRINCIPAL": ["Dashboard"],
+            "📊 PRINCIPAL": ["Dashboard","Reportes"],
             "📦 INVENTARIO": ["Categorías", "Proveedores", "Productos", "Inventario"],
             "🛒 COMERCIAL": ["Cotizaciones", "Ventas", "CxC", "Historial"],
             "💰 FINANZAS": ["Compras", "Hist. Compras", "Gastos", "Finanzas"]
@@ -67,6 +67,9 @@ class AppNegocio(ctk.CTk):
         if nombre_vista == "Dashboard":
             from views.view_dashboard import VistaDashboard
             self.vista_actual = VistaDashboard(self.main_frame)
+        elif nombre_vista == "Reportes":
+            from views.view_reportes import VistaReportes
+            self.vista_actual = VistaReportes(self.main_frame)
         elif nombre_vista == "Categorías":
             from views.view_categorias import VistaCategorias
             self.vista_actual = VistaCategorias(self.main_frame)

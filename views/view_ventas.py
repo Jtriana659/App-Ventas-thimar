@@ -37,7 +37,8 @@ class VistaVentas(ctk.CTkFrame):
 
         # --- FILA 1: Producto ---
         ctk.CTkLabel(frame_agregar, text="Producto:").grid(row=0, column=0, padx=10, pady=10, sticky="w")
-        self.combo_prod = ctk.CTkComboBox(frame_agregar, width=400, values=["Cargando..."], command=self.al_seleccionar_producto, state="readonly")
+        self.combo_prod = ttk.Combobox(frame_agregar, width=65, values=["Cargando..."], state="readonly")
+        self.combo_prod.bind("<<ComboboxSelected>>", lambda e: self.al_seleccionar_producto(self.combo_prod.get()))
         self.combo_prod.grid(row=0, column=1, columnspan=4, padx=10, pady=10, sticky="w")
 
         # --- FILA 2: Precio, Cantidad y Botón ---
